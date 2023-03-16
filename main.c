@@ -1,14 +1,16 @@
+//library links in pseudocode
+
 #include <ESP8266WiFi.h>
 #include <ThingSpeak.h>
 
 //Access point credentials
 //point to a different file for security reasons
-const char* ssid = "your_SSID_here";
-const char* password = "your_PASSWORD_here";
+const char* ssid = "AP_ssid";
+const char* password = "AP_password";
 
 //initializing thingspeak API
 unsigned long channelID = your_channel_ID_here;
-const char* writeAPIKey = "your_write_API_key_here";
+const char* writeAPIKey = "API_key";
 const char* server = "api.thingspeak.com";
 
 // initial MQ-135 settings
@@ -25,7 +27,7 @@ void setup() {
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
-    Serial.println("Connecting to WiFi...");
+    Serial.println("Connecting to WiFi..");
   }
   //thingspeak api
   ThingSpeak.begin(client);
