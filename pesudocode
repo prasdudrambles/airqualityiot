@@ -1,0 +1,38 @@
+https://github.com/esp8266/Arduino              //documentation for <ESP8266WiFi.h>
+https://github.com/mathworks/thingspeak-arduino //documentation for <ThingSpeak.h>
+
+
+
+// WiFi settings
+ssid = "your_AP_SSID"
+password = "your_ap_password"
+
+// ThingSpeak settings
+channelID = your_channel_ID_here
+writeAPIKey = "your_write_API_key_here"
+server = "api.thingspeak.com"
+
+// Gas sensor settings
+sensorValue = 0
+airQualityIndex = 0
+samplingTime = 280
+deltaTime = 40
+pin = A0
+
+setup():
+  initialize Serial communication
+  connect to WiFi
+  initialize ThingSpeak
+
+loop():
+  read analog value from gas sensor
+  calculate air quality index
+  print air quality index
+  update ThingSpeak channel with air quality index
+  wait for 15 seconds before taking another reading
+  
+// Function to calculate air quality index
+calculate_air_quality_index():
+  Rs = 1023 / sensorValue - 1
+  ratio = Rs / (samplingTime * 9.8)
+  airQualityIndex = 0.25 * ratio * 10000 / (5 - ratio)
