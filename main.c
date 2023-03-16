@@ -1,4 +1,4 @@
-//library links in pseudocode
+//library documentation links in pseudocode
 
 #include <ESP8266WiFi.h>
 #include <ThingSpeak.h>
